@@ -22,14 +22,6 @@ const userSchema = mongoose.Schema({
         type:String,
         maxlength: 50
     },
-    role : {
-        type:Number,
-        default: 0 
-    },
-    image: String,
-    token : {
-        type: String,
-    },
     tokenExp :{
         type: Number
     }
@@ -74,7 +66,7 @@ userSchema.methods.generateToken = function(cb) {
     user.save(function (err, user){
         if(err) return cb(err)
         cb(null, user);
-    })
+    }) 
 }
 
 userSchema.statics.findByToken = function (token, cb) {
